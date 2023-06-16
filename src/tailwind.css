@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .nav-item {
+        @apply text-white mx-4 max-lg:py-2 lg:my-2 text-xl uppercase relative
+        md:block
+        lg:text-xl;
+    }
+    
+    .text-footer-title {
+        @apply text-3xl text-white py-3
+        md:py-4
+        max-[414px]:py-2
+    }
+    .text-footer {
+        @apply text-white capitalize cursor-pointer hover:underline hover:decoration-1 hover:underline-offset-4
+    }
+    .checkbox {
+        @apply my-1 h-6 w-6 rounded-md mr-3 text-brown focus:ring-0 focus:ring-offset-0
+    }
+}
