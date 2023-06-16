@@ -16,9 +16,10 @@ const BlogIntro = () => {
     }, [])
 
     return (
-        <div className="flex sm:bg-[url('src/assets/images/home/blogintro/background.jpg')] lg:bg-['url(src/assets/images/home/blogintro/background1.jpg)']
-            bg-cover items-center justify-around">
-            <div className='max-lg:hidden w-1/5'>
+        <div className="flex sm:bg-[url(https://firebasestorage.googleapis.com/v0/b/mythworld-ef1f6.appspot.com/o/background1.jpg?alt=media&token=e0e280ae-059b-4f1e-9e5d-f735fc3d2de7)] 
+            bg-cover items-center justify-around"
+        >
+            <div className='max-lg:hidden w-1/4'>
                 <div className="flex my-2 cursor-default"
                 >
                     <img
@@ -33,13 +34,13 @@ const BlogIntro = () => {
                     </p>
                 </div>
                 <p className='text-white text-base lg:text-lg'>
-                    A collection of myths related to Mythsale's products, and more...
+                    A collection of myths related to Mythicom's products, and more...
                 </p>
                 <a href='https://mythicala.vercel.app/blogs'>
                     <AppButton content='Explore' className='text-white' />
                 </a>
             </div>
-            <div className='sm:bg-brown w-full sm:w-4/5 sm:text-white lg:w-2/5 pt-4 sm:rounded-xl sm:my-8'>
+            <div className='sm:bg-brown w-full sm:w-4/5 sm:text-white lg:w-1/2 xl:w-2/5 pt-4 sm:rounded-xl sm:my-8'>
                 <TitlePage title='Latest myths' className='max-lg:hidden text-3xl xl:text-5xl' />
                 <TitlePage title='Mythicala' className='lg:hidden text-3xl md:text-5xl' />
                 {

@@ -6,7 +6,7 @@ import Modal from '../../../global_components/Modal'
 import StarRating from '../../../global_components/StarRating'
 
 const Item = (props: any) => {
-    const [openRatePopup, setRatePopup] = useState(false)
+    const [openRatePopup, setRatePopup] = useState(false)    
     const BuyAgain = () => {
         const productInfo = {
             ...props.data,
@@ -68,8 +68,11 @@ const Item = (props: any) => {
                 <div className='mx-auto w-4/5 lg:w-1/3 rounded-xl bg-white'>
                     <p className='bg-brown text-white text-center py-4 rounded-t-xl'>Product Rating</p>
                     <div className='my-4'>
-                        <p className='py-3 text-center'>Amazing </p>
-                        <StarRating star={0} className='justify-center' />
+                        <StarRating star={5} onRating={RateProduct} isReset={!openRatePopup} className='justify-center' />
+                        <div className='flex justify-between mx-10'>
+                            <AppButton content='add photo' className='text-white !bg-dark-grey !w-2/5' />
+                            <AppButton content='submit' className='!bg-gold !w-2/5' />
+                        </div>
                     </div>
                 </div>
             </Modal> */}

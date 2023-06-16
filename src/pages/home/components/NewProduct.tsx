@@ -9,8 +9,8 @@ import jtwmb2 from '../../../assets/images/home/newproduct/jtwmb2.jpg'
 const NewProduct = () => {
     return (
         <div>
-            <div className="bg-[url('src/assets/images/home/newproduct/jtw.jpg')]
-            bg-no-repeat bg-cover bg-center max-lg:h-96 pt-6"
+            <div className="bg-no-repeat bg-cover bg-center max-lg:h-96 pt-6"
+                style={{backgroundImage: `url('https://firebasestorage.googleapis.com/v0/b/mythworld-ef1f6.appspot.com/o/jtw.jpg?alt=media&token=654096fd-0196-468d-bd0b-91ca356fd81d')`}}
             >
                 <p className='text-xl sm:text-4xl xl:text-5xl text-center text-white py-2 rounded-full bg-teal
                 mx-6 sm:mx-10 lg:mx-52 xl:mx-72 2xl:mx-96 

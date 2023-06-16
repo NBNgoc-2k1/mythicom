@@ -31,3 +31,10 @@ export interface CartInfo {
     selectedItem: any[],
     totalValue: number
 }
+
+export interface Rating {
+    star: number,
+    textReview: '',
+    mediaProducts: [],
+    
+}
