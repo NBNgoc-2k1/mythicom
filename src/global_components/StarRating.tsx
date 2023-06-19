@@ -22,8 +22,8 @@ const StarRating = (props: any) => {
     },[props.isReset])
 
     return (
-        <div>
-            <p className={`py-3 text-center ${props.disable && 'hidden'} capitalize`}>{descriptionRate[hover-1]}</p>
+        <div className={`${props.star === 0 && 'hidden'}`}>
+            <p className={`py-3 text-center ${props.disable && 'hidden'} capitalize`}>{descriptionRate[hover - 1]}</p>
             <div className={`flex ${props.className}`}>
                 {[...Array(5)].map((star, index) => {
                     index += 1;

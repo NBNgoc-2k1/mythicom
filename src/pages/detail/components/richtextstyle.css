@@ -1,0 +1,11 @@
+ul{
+    list-style: disc inside ;
+}
+
+li{
+    text-indent: 3rem;
+}
+
+#description p{
+    text-indent: 2rem
+}

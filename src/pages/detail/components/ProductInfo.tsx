@@ -13,6 +13,7 @@ import { AddToCart, ToggleWishlist } from '../../../globalFunctions';
 import { useNavigate } from 'react-router-dom';
 import { OrderInfo } from '../../../interface'
 import { authentication } from '../../../firebase-config';
+import './richtextstyle.css'
 const ProductInfo = (props: any) => {
     const [quantity, setQuantity] = useState(1);
     const inventory = props.data.inventory
@@ -39,7 +40,6 @@ const ProductInfo = (props: any) => {
             setWish(isExist)
         }
     }, [])
-
 
     const BuyNow = () => {
         navigate('/checkout')
@@ -95,7 +95,7 @@ const ProductInfo = (props: any) => {
     }
 
     const describesample = (
-        <div className={`bg-dark-silver text-dark-grey rounded-b-xl p-4 ${fullDescription && 'h-full overflow-y-scroll'}`}>
+        <div id='description' className={`bg-dark-silver text-dark-grey rounded-b-xl p-4 ${fullDescription && 'h-full overflow-y-scroll'}`}>
             {parser(props.data.description, options)}
         </div>
     )
@@ -110,8 +110,9 @@ const ProductInfo = (props: any) => {
     return (
         <div className='mx-2 sm:mx-20 2xl:mx-0 text-white lg:flex '>
             <img src={props.data.avtImg} className='w-full lg:w-2/5 lg:h-2/5 max-lg:rounded-t-2xl' />
-            <div className='lg:w-1/2 py-3 px-6 mx-auto bg-teal rounded-2xl' >
-                <p className='text-xl sm:text-2xl xl:text-3xl font-semibold'>{props.data.name}</p>
+            <div className='lg:w-1/2 py-3 px-6 mx-auto bg-teal rounded-b-2xl lg:rounded-2xl' >
+                <p className='text-xl sm:text-3xl xl:text-4xl font-semibold'>{props.data.name}</p>
+                <p className={`text-xl ${props.data.rating > 0 && 'hidden'} w-fit bg-dark-silver text-dark-grey p-1 rounded-xl`}>Not ratings yet</p>
                 <StarRating star={props.data.rating} disable={true} />
                 <div className='flex items-center my-3'>
                     <p className='text-2xl md:text-3xl xl:text-4xl text-gold '>{currencyFormatter.format(props.data.price)}</p>
