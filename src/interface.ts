@@ -20,6 +20,7 @@ export interface FilterDataset {
     category: string[],
     material: string[],
     origin: string[],
+    author: string[]
 }
 
 export interface RangePrice {

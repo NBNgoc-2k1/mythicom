@@ -82,6 +82,7 @@ const CategoryPage = () => {
     const category: string[] = []
     const material: string[] = []
     const origin: string[] = []
+    const author: string[] = []
 
     await GetAllOrderedData('createdAt', 'products').then((products) => {
       const productsByCategory = products.filter((data: any) => data.category === param1)
@@ -115,6 +116,7 @@ const CategoryPage = () => {
       category: RemoveDuplicateItem(category),
       material: RemoveDuplicateItem(material),
       origin: RemoveDuplicateItem(origin),
+      author: RemoveDuplicateItem(author)
     })
   }
 

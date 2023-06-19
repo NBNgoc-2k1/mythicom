@@ -25,9 +25,6 @@ const Navigation = (props: any) => {
             { title: 'items', path: '/figurines/items' }
         ],
         books: [
-            { title: 'Notebook', path: '/books/notebook' },
-            { title: 'Novel', path: '/books/novel' },
-
         ],
         accessories: [
             { title: 'Key chain', path: '/accessories/keyChain' },

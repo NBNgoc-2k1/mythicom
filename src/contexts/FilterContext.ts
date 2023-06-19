@@ -15,6 +15,7 @@ export const FilterContext = createContext<FilterContextType>({
         category: [],
         material: [],
         origin: [],
+        author: []
         },
         rangePrice: {
             minPrice: 0,
