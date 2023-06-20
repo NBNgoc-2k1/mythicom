@@ -74,7 +74,7 @@ const Filter = (props: any) => {
             <>
                 {
                     props.filterValue && Object.keys(props.filterValue).map((value) => {
-                        if (param1 !== 'books' || (param1 === 'books' && (value === 'origin' || value === 'author'))) { 
+                        if ((param1 !== 'books' && value !== 'author') || (param1 === 'books' && (value === 'origin' || value === 'author'))) { 
                             return (
                                 <FilterWrapper label={value}
                                     valueSet={props.filterValue[value]}

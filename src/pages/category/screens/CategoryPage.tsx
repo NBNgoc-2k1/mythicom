@@ -46,6 +46,9 @@ const CategoryPage = () => {
     const originList = filterValue.selectedValue.origin
     const categoryList = filterValue.selectedValue.category
 
+    console.log(materialList);
+    
+
     const hasMaterial = materialList.length > 0 ? materialList.includes(product.material) : true
     const hasYear = originList.length > 0 ? originList.includes(product.origin) : true
     const hasCategory = categoryList.length > 0 ? categoryList.includes(product.subCategory) : true
@@ -78,6 +81,7 @@ const CategoryPage = () => {
   const RemoveDuplicateItem = (array: any) => {
     return [...new Set(array)]
   }
+
   async function FetchData() {
     const category: string[] = []
     const material: string[] = []
@@ -145,7 +149,7 @@ const CategoryPage = () => {
       <TitlePage title={param1 || ''} />
       <div className='flex'>
         <Filter filterValue={filterValueSet} className='max-lg:hidden'
-          onFilterByCategory={() => FilterByCategory(filteredProducts)}
+          onFilterByCategory={() => FilterByCategory(productByCategory)}
           onFilterByPrice={() => FilterByPrice(filteredProducts,
             filterValue.rangePrice.maxPrice.toString(),
             filterValue.rangePrice.minPrice.toString()
@@ -193,7 +197,7 @@ const CategoryPage = () => {
               onClick={ToggleFilterDrawer}
             />
             <Filter filterValue={filterValueSet}
-              onFilterByCategory={() => FilterByCategory(filteredProducts)}
+              onFilterByCategory={() => FilterByCategory(productByCategory)}
               onFilterByPrice={() => FilterByPrice(filteredProducts,
                 filterValue.rangePrice.maxPrice.toString(),
                 filterValue.rangePrice.minPrice.toString()
