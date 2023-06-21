@@ -18,11 +18,6 @@ const SignUp = (props: any) => {
 
     function toggleShowPass() {
         setShowPass(!showPass)
-        setEmail('')
-        setPass('')
-        setFullName('')
-        setAddress('')
-        setPhoneNumber('')
     }
 
     const SignUp = (email: string, pass: string, fullname: string, address: string, phone: string) => {
