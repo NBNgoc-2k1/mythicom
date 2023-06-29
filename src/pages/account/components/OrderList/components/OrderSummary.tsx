@@ -3,7 +3,6 @@ import SelectedProduct from '../../../../checkout/components/PriceSummary/compon
 import { currencyFormatter } from '../../../../../services'
 import AppButton from '../../../../../global_components/AppButton'
 import { useNavigate } from 'react-router-dom'
-import { GetSingleData } from '../../../../../api/CRUD_API'
 import { AddToCart } from '../../../../../globalFunctions'
 
 const OrderSummary = (props: any) => {

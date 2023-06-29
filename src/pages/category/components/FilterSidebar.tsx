@@ -9,7 +9,7 @@ import { useParams } from 'react-router-dom'
 const Filter = (props: any) => {
     const [unCheckedAll, setUnCheckedAll] = useState(false)
     const { filterValue, setFilterValue } = useFilter()
-    let { param1, param2 } = useParams()
+    let { param1 } = useParams()
 
     return (
         <div className={`${props.className} lg:w-1/5 bg-teal lg:rounded-r-xl lg:mt-20 h-fit py-4 text-white`}>
@@ -74,7 +74,8 @@ const Filter = (props: any) => {
             <>
                 {
                     props.filterValue && Object.keys(props.filterValue).map((value) => {
-                        if ((param1 !== 'books' && value !== 'author') || (param1 === 'books' && (value === 'origin' || value === 'author'))) { 
+                        if ((param1 !== 'books' && value !== 'author' && value !== 'language') ||
+                            (param1 === 'books' && (value === 'origin' || value === 'author' || value === 'language'))) { 
                             return (
                                 <FilterWrapper label={value}
                                     valueSet={props.filterValue[value]}

@@ -16,7 +16,7 @@ import { errorSnackbar } from '../../../services'
 import { GetAllOrderedData } from '../../../api/CRUD_API'
 
 const CategoryPage = () => {
-  const [productByCategory, setProductByCategory] = useState([])
+  const [allProducts, setAllProducts] = useState([])
   const [filteredProducts, setFilteredProducts] = useState([])
   const [filterValueSet, setFilterValueSet] = useState<Object>({})
   let { param1, param2 } = useParams()
@@ -37,7 +37,7 @@ const CategoryPage = () => {
         maxPrice: 0
       }
     })
-    setFilteredProducts(productByCategory)
+    setFilteredProducts(allProducts)
     setOpenFilterDrawer(false)
   }
 
@@ -45,9 +45,6 @@ const CategoryPage = () => {
     const materialList = filterValue.selectedValue.material
     const originList = filterValue.selectedValue.origin
     const categoryList = filterValue.selectedValue.category
-
-    console.log(materialList);
-    
 
     const hasMaterial = materialList.length > 0 ? materialList.includes(product.material) : true
     const hasYear = originList.length > 0 ? originList.includes(product.origin) : true
@@ -81,7 +78,6 @@ const CategoryPage = () => {
   const RemoveDuplicateItem = (array: any) => {
     return [...new Set(array)]
   }
-
   async function FetchData() {
     const category: string[] = []
     const material: string[] = []
@@ -91,8 +87,8 @@ const CategoryPage = () => {
     await GetAllOrderedData('createdAt', 'products').then((products) => {
       const productsByCategory = products.filter((data: any) => data.category === param1)
       if (productsByCategory.length > 0)
-        setProductByCategory(productsByCategory);
-      else setProductByCategory(products)
+        setAllProducts(productsByCategory);
+      else setAllProducts(products)
       if (param1 === 'result') {
         setFilteredProducts(products.filter(((data: any) => data.name.includes(param2))))
       } else {
@@ -144,12 +140,13 @@ const CategoryPage = () => {
     }
   }, [location])
 
+
   return (
     <div className='my-10'>
       <TitlePage title={param1 || ''} />
       <div className='flex'>
         <Filter filterValue={filterValueSet} className='max-lg:hidden'
-          onFilterByCategory={() => FilterByCategory(productByCategory)}
+          onFilterByCategory={() => FilterByCategory(allProducts)}
           onFilterByPrice={() => FilterByPrice(filteredProducts,
             filterValue.rangePrice.maxPrice.toString(),
             filterValue.rangePrice.minPrice.toString()
@@ -165,7 +162,7 @@ const CategoryPage = () => {
             <SortDropdown handleSort={SortProducts} data={[...filteredProducts]} />
           </div>
           {
-            productByCategory.length > 0 ? <>
+            allProducts.length > 0 ? <>
               {
                 filteredProducts.length > 0 ? <div className='grid my-8 justify-items-center
                 grid-cols-2
@@ -197,7 +194,7 @@ const CategoryPage = () => {
               onClick={ToggleFilterDrawer}
             />
             <Filter filterValue={filterValueSet}
-              onFilterByCategory={() => FilterByCategory(productByCategory)}
+              onFilterByCategory={() => FilterByCategory(allProducts)}
               onFilterByPrice={() => FilterByPrice(filteredProducts,
                 filterValue.rangePrice.maxPrice.toString(),
                 filterValue.rangePrice.minPrice.toString()

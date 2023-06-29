@@ -2,7 +2,7 @@ ul{
     list-style: disc inside ;
 }
 
-li{
+#description li{
     text-indent: 3rem;
 }
 

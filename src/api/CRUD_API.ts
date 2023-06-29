@@ -10,14 +10,6 @@ export const AddNewData = async (newData: object, fieldPath:string, message?:any
     
     try {
         const dataRef = await addDoc(collection(database, fieldPath), { ...newData, createdAt: serverTimestamp() });
-        // const newUserData = {
-        //     ...currentUserInfo,fieldPath: [
-        //         ...currentUserInfo[fieldPath],
-        //         dataRef.id
-        //     ],
-        // }
-        // UpdateData(currentUserInfo.uid,'users',newUserData,() => {})
-        // localStorage.setItem('currentUser', JSON.stringify(newUserData))
         successSnackbar(message)
         return dataRef.id
     }

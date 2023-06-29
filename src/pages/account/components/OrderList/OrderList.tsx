@@ -22,13 +22,6 @@ const OrderList = (props: any) => {
             isEffectRan.current = true
         }
     }, [])
-    
-    useEffect(() => {
-        console.log(orderList);
-        
-    },[orderList])
-    
-
 
     return (
         <div>

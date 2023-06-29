@@ -26,7 +26,7 @@ const WishedItem = (props: any) => {
                 src={props.data.img}
                 onClick={() => navigate(`/product/${props.data.id}`)}
             />
-            <div className='max-sm:ml-2 w-3/5 cursor-pointer'
+            <div className='ml-4 w-3/5 cursor-pointer'
                 onClick={() => navigate(`/product/${props.data.id}`)}
                 >
                 <p className='text-lg xl:text-xl line-clamp-2'>{props.data.name}</p>

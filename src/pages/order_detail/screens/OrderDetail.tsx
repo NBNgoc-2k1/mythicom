@@ -35,12 +35,12 @@ const OrderDetail = (props: any) => {
                                 <div className='w-full lg:w-2/5'>
                                     <p className='uppercase font-bold'>Address</p>
                                     <div className='bg-dark-silver p-4 rounded-xl'>
-                                        <p className='capitalize lg:font-semibold'>{orderInfo.userInfo.name}</p>
+                                        <p className='capitalize lg:font-semibold'>{orderInfo.customerInfo.name}</p>
                                         <p className='text-dark-grey'>
-                                            Address: {orderInfo.userInfo.address}
+                                            Address: {orderInfo.customerInfo.address}
                                         </p>
                                         <p className='text-dark-grey'>
-                                            Điện thoại: {orderInfo.userInfo.phoneNumber}
+                                            Điện thoại: {orderInfo.customerInfo.phoneNumber}
                                         </p>
                                     </div>
                                 </div>

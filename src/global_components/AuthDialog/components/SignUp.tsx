@@ -75,19 +75,11 @@ const SignUp = (props: any) => {
                     icon={showPass ? faEyeSlash : faEye} iconClick={toggleShowPass}
                     className='!mt-6'
                 />
-                <TextField label='Phone number' type='text' value={phoneNumber} onChange={(event: any) => setPhoneNumber(event.target.value)}
-                    className='!mt-6'
 
-                />
-                <TextField label='Address' type='text' value={address} onChange={(event: any) => setAddress(event.target.value)}
-                    className='!mt-6'
-                    placeholder='Must include city/province'
-
-                />
             </div>
             <AppButton className='text-white' content='Sign Up'
                 title='Fill data'
-                disabled={!isEmail(email) || pass.length < 8 || fullName == '' || address == '' || phoneNumber == ''}
+                disabled={!isEmail(email) || pass.length < 8 || fullName == ''}
                 onClick={() => {
                     SignUp(email, pass, fullName, address, phoneNumber)
                 }} />

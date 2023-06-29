@@ -32,13 +32,13 @@ const PriceSummary = () => {
     const ResetOrderInfo = () => {
         const newOrderInfo = {
             ...orderInfo,
-            userInfo: {
+            customerInfo: {
                 ...orderInfo.userInfo,
                 fullName: currentUser.fullName || '',
                 phoneNumber: currentUser.phoneNumber || '',
                 address: currentUser.address || '',
                 country: 'Vietnam',
-                postal: '',
+                postalCode: '',
             }
         }
         sessionStorage.setItem('orderInfo', JSON.stringify(newOrderInfo))
@@ -49,12 +49,12 @@ const PriceSummary = () => {
             ...orderInfo,
             shipping: shipfee,
             discount:discount,
-            userInfo: {
+            customerInfo: {
                 fullName: orderInfo.userInfo.fullName.trim(),
                 phoneNumber: orderInfo.userInfo.phoneNumber.trim(),
                 address: orderInfo.userInfo.address.trim(),
                 country: orderInfo.userInfo.country,
-                postal: orderInfo.userInfo.postal.trim()
+                postalCode: orderInfo.userInfo.postal.trim()
             }
         }
         AddNewData(newOrderInfo, 'orders', 'Order placed').then((orderID: any) => {
