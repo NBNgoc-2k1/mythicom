@@ -26,6 +26,7 @@ const SignUp = (props: any) => {
             'fullName': fullname,
             "blogs": [],
             'bookmark': [],
+            'cart':[],
             'address': address,
             'phoneNumber': phone,
             'orders': [],
