@@ -12,10 +12,11 @@ export type FilterContextType = {
 export const FilterContext = createContext<FilterContextType>({
     filterValue: {
         selectedValue: {
-        category: [],
-        material: [],
-        origin: [],
-        author: []
+            category: [],
+            material: [],
+            origin: [],
+            author: [],
+            language: []
         },
         rangePrice: {
             minPrice: 0,

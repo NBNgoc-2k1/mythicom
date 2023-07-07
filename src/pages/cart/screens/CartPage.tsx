@@ -28,7 +28,7 @@ const CartPage = () => {
                             <div className='bg-dark-silver rounded-xl py-10'>
                                 <div className='mx-auto w-fit mb-8'>
                                     <img src={fastcart} className='mx-auto' />
-                                    <p className='text-xl'>Your cart doesn't have any products now</p>
+                                    <p className='text-xl text-center'>Your cart doesn't have any products now</p>
                                 </div>
                                 <AppButton content='Continue shopping' onClick={() => { navigation('/')}}
                                     className='text-white mx-auto'

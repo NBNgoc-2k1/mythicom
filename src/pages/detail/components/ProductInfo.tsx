@@ -59,7 +59,7 @@ const ProductInfo = (props: any) => {
         }
         else {
             const orderInfo: OrderInfo = {
-                userInfo: {
+                customerInfo: {
                     fullName: '',
                     phoneNumber: '',
                     address: '',

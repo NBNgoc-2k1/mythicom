@@ -8,7 +8,7 @@ export type OrderContextType = {
 
 export const OrderContext = createContext<OrderContextType>({
     orderInfo: {
-        userInfo: {
+        customerInfo: {
             fullName: '',
             phoneNumber: '',
             address: '',

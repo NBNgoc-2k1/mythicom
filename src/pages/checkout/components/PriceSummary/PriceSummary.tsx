@@ -22,7 +22,7 @@ const PriceSummary = () => {
     const CheckFieldEmpty = (label: any) => {
         const propertyName: keyof userData = label
 
-        return orderInfo.userInfo[propertyName] !== '' && orderInfo.userInfo[propertyName].trim().length > 0
+        return orderInfo.customerInfo[propertyName] !== '' && orderInfo.customerInfo[propertyName].trim().length > 0
     }
 
     useEffect(() => {
@@ -33,7 +33,7 @@ const PriceSummary = () => {
         const newOrderInfo = {
             ...orderInfo,
             customerInfo: {
-                ...orderInfo.userInfo,
+                ...orderInfo.customerInfo,
                 fullName: currentUser.fullName || '',
                 phoneNumber: currentUser.phoneNumber || '',
                 address: currentUser.address || '',
@@ -50,11 +50,11 @@ const PriceSummary = () => {
             shipping: shipfee,
             discount:discount,
             customerInfo: {
-                fullName: orderInfo.userInfo.fullName.trim(),
-                phoneNumber: orderInfo.userInfo.phoneNumber.trim(),
-                address: orderInfo.userInfo.address.trim(),
-                country: orderInfo.userInfo.country,
-                postalCode: orderInfo.userInfo.postal.trim()
+                fullName: orderInfo.customerInfo.fullName.trim(),
+                phoneNumber: orderInfo.customerInfo.phoneNumber.trim(),
+                address: orderInfo.customerInfo.address.trim(),
+                country: orderInfo.customerInfo.country,
+                postalCode: orderInfo.customerInfo.postal.trim()
             }
         }
         AddNewData(newOrderInfo, 'orders', 'Order placed').then((orderID: any) => {

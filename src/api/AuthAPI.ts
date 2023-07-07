@@ -15,7 +15,7 @@ export function LoginAPI(email: string, password: string, clearField?: any, clos
         .then((userAuth) => {
             GetSingleData('users', userAuth.user.uid).then((user: any) => {
                 const orderInfo: OrderInfo = {
-                    userInfo: {
+                    customerInfo: {
                         fullName: user.fullName,
                         phoneNumber: user.phoneNumber,
                         address: user.address,

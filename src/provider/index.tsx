@@ -11,7 +11,8 @@ const index = (props: any) => {
             category: [],
             material: [],
             origin: [],
-            author: []
+            author: [],
+            language: []
         },
         rangePrice: {
             minPrice: 0,
@@ -23,7 +24,7 @@ const index = (props: any) => {
         totalValue: 0
     })
     const [orderInfo, setOrderInfo] = useState({
-        userInfo: {
+        customerInfo: {
             fullName: '',
             phoneNumber: '',
             address: '',

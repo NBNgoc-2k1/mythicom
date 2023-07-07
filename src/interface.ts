@@ -7,7 +7,7 @@ export interface userData {
 }
 
 export interface OrderInfo {
-    userInfo: userData,
+    customerInfo: userData,
     deliverMethod: string,
     paymentMethod: string,
     products: any[],
@@ -20,7 +20,8 @@ export interface FilterDataset {
     category: string[],
     material: string[],
     origin: string[],
-    author: string[]
+    author: string[],
+    language: string[]
 }
 
 export interface RangePrice {

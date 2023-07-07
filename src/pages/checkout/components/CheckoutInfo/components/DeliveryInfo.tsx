@@ -6,12 +6,12 @@ import { userOrder } from '../../../../../contexts/TempOrderContext';
 
 const DeliveryInfo = () => {
     const orderInfo = JSON.parse(sessionStorage.getItem('orderInfo') || '{}')
-    const [email, setEmail] = useState(orderInfo.userInfo.userEmail || '');
-    const [fullname, setFullname] = useState(orderInfo.userInfo.fullName || '');
-    const [address, setAddress] = useState(orderInfo.userInfo.address || '');
-    const [phoneNumber, setPhoneNumber] = useState(orderInfo.userInfo.phoneNumber || '');
+    const [email, setEmail] = useState(orderInfo.customerInfo.userEmail || '');
+    const [fullname, setFullname] = useState(orderInfo.customerInfo.fullName || '');
+    const [address, setAddress] = useState(orderInfo.customerInfo.address || '');
+    const [phoneNumber, setPhoneNumber] = useState(orderInfo.customerInfo.phoneNumber || '');
     const [country, setCountry] = useState('Vietnam')
-    const [postalCode, setPostalCode] = useState(orderInfo.userInfo.postal || '');
+    const [postalCode, setPostalCode] = useState(orderInfo.customerInfo.postal || '');
     const [countryList, setCountryList] = useState([])
     const {setOrderInfo} = userOrder()
     const getCountry = async () => {
@@ -30,8 +30,8 @@ const DeliveryInfo = () => {
     const ChangeUserInfoState = (label: string, value: any) => {
         const newOrderInfo = {
             ...orderInfo,
-            userInfo: {
-                ...orderInfo.userInfo,
+            customerInfo: {
+                ...orderInfo.customerInfo,
                 [label]: value
             }
         }

@@ -17,12 +17,13 @@ import { GetAllOrderedData } from '../../../api/CRUD_API'
 
 const CategoryPage = () => {
   const [allProducts, setAllProducts] = useState([])
+  const [resultProducts, setResultProducts] = useState([])
   const [filteredProducts, setFilteredProducts] = useState([])
-  const [filterValueSet, setFilterValueSet] = useState<Object>({})
   let { param1, param2 } = useParams()
   const location = useLocation()
   const [openFilterDrawer, setOpenFilterDrawer] = useState(false)
   const { filterValue, setFilterValue } = useFilter()
+  const [filterValueSet, setFilterValueSet] = useState<any>({})
 
   const ResetFilter = () => {
     setFilterValue({
@@ -31,13 +32,15 @@ const CategoryPage = () => {
         category: [],
         material: [],
         origin: [],
+        author: [],
+        language: []
       },
       rangePrice: {
         minPrice: 0,
         maxPrice: 0
       }
     })
-    setFilteredProducts(allProducts)
+    setFilteredProducts(resultProducts)
     setOpenFilterDrawer(false)
   }
 
@@ -75,48 +78,58 @@ const CategoryPage = () => {
     setOpenFilterDrawer(false)
   }
 
-  const RemoveDuplicateItem = (array: any) => {
-    return [...new Set(array)]
-  }
   async function FetchData() {
-    const category: string[] = []
-    const material: string[] = []
-    const origin: string[] = []
-    const author: string[] = []
-
     await GetAllOrderedData('createdAt', 'products').then((products) => {
-      const productsByCategory = products.filter((data: any) => data.category === param1)
-      if (productsByCategory.length > 0)
-        setAllProducts(productsByCategory);
-      else setAllProducts(products)
+      setAllProducts(products)
+      const valueSet: any = {
+        category: [],
+        material: [],
+        origin: [],
+        author: [],
+        language: []
+      }
+
       if (param1 === 'result') {
-        setFilteredProducts(products.filter(((data: any) => data.name.includes(param2))))
-      } else {
-        if (param2 !== '1') {
-          const productsBySubCategory = productsByCategory.filter((data: any) => data.subCategory === param2)
+        setResultProducts(products)
+        const result = products.filter(((data: any) => data.name.includes(param2)))
+        setFilteredProducts(result)
+        result.map((item: any) => {
+          !valueSet.author.includes(item.author) && valueSet.author.push(item.author)
+          !valueSet.category.includes(item.subCategory) && valueSet.category.push(item.subCategory)
+          !valueSet.language.includes(item.language) && valueSet.language.push(item.language)
+          !valueSet.material.includes(item.material) && valueSet.material.push(item.material)
+          !valueSet.origin.includes(item.origin) && valueSet.origin.push(item.origin)
+        })
+      }
+      else {
+        const productsByCategory = products.filter((data: any) => data.category === param1)
+        setResultProducts(productsByCategory)
+        setFilteredProducts(productsByCategory)
+
+        const productsBySubCategory = products.filter((data: any) => data.subCategory === param2)
+        if (productsBySubCategory.length > 0) {
+          setResultProducts(productsBySubCategory)
           setFilteredProducts(productsBySubCategory)
-          productsBySubCategory.map((data: any) => {
-            category.push(data.subCategory)
-            material.push(data.material)
-            origin.push(data.origin)
+          productsBySubCategory.map((item: any) => {
+            !valueSet.author.includes(item.author) && valueSet.author.push(item.author)
+            !valueSet.category.includes(item.subCategory) && valueSet.category.push(item.subCategory)
+            !valueSet.language.includes(item.language) && valueSet.language.push(item.language)
+            !valueSet.material.includes(item.material) && valueSet.material.push(item.material)
+            !valueSet.origin.includes(item.origin) && valueSet.origin.push(item.origin)
           })
         }
         else {
-          setFilteredProducts(productsByCategory)
-          productsByCategory.map((data: any) => {
-            category.push(data.subCategory)
-            material.push(data.material)
-            origin.push(data.origin)
+          productsByCategory.map((item: any) => {
+            !valueSet.author.includes(item.author) && valueSet.author.push(item.author)
+            !valueSet.category.includes(item.subCategory) && valueSet.category.push(item.subCategory)
+            !valueSet.language.includes(item.language) && valueSet.language.push(item.language)
+            !valueSet.material.includes(item.material) && valueSet.material.push(item.material)
+            !valueSet.origin.includes(item.origin) && valueSet.origin.push(item.origin)
           })
         }
       }
-    })
 
-    setFilterValueSet({
-      category: RemoveDuplicateItem(category),
-      material: RemoveDuplicateItem(material),
-      origin: RemoveDuplicateItem(origin),
-      author: RemoveDuplicateItem(author)
+      setFilterValueSet(valueSet)
     })
   }
 
@@ -134,19 +147,17 @@ const CategoryPage = () => {
 
   useEffect(() => {
     FetchData()
-    filterValue.selectedValue['category'].length = 0
     if (param2 !== '1' && param2 !== undefined) {
       filterValue.selectedValue['category'].push(param2)
     }
   }, [location])
 
-
   return (
     <div className='my-10'>
       <TitlePage title={param1 || ''} />
       <div className='flex'>
-        <Filter filterValue={filterValueSet} className='max-lg:hidden'
-          onFilterByCategory={() => FilterByCategory(allProducts)}
+        <Filter className='max-lg:hidden' filterValue={filterValueSet}
+          onFilterByCategory={() => FilterByCategory(resultProducts)}
           onFilterByPrice={() => FilterByPrice(filteredProducts,
             filterValue.rangePrice.maxPrice.toString(),
             filterValue.rangePrice.minPrice.toString()
@@ -194,7 +205,7 @@ const CategoryPage = () => {
               onClick={ToggleFilterDrawer}
             />
             <Filter filterValue={filterValueSet}
-              onFilterByCategory={() => FilterByCategory(allProducts)}
+              onFilterByCategory={() => FilterByCategory(resultProducts)}
               onFilterByPrice={() => FilterByPrice(filteredProducts,
                 filterValue.rangePrice.maxPrice.toString(),
                 filterValue.rangePrice.minPrice.toString()
