@@ -4,7 +4,7 @@ import AppButton from '../../../../global_components/AppButton'
 import TextField from '../../../../global_components/TextField'
 import { useNavigate } from 'react-router-dom';
 import SelectedProduct from './components/SelectedProducts';
-import { AddNewData, UpdateData } from '../../../../api/CRUD_API';
+import { AddNewData, GetSingleData, UpdateData } from '../../../../api/CRUD_API';
 import { userOrder } from '../../../../contexts/TempOrderContext';
 import { userData } from '../../../../interface';
 import { useCart } from '../../../../contexts/CartContext';
@@ -37,6 +37,7 @@ const PriceSummary = () => {
                 fullName: currentUser.fullName || '',
                 phoneNumber: currentUser.phoneNumber || '',
                 address: currentUser.address || '',
+                userEmail: currentUser.userEmail || '',
                 country: 'Vietnam',
                 postalCode: '',
             }
@@ -48,15 +49,17 @@ const PriceSummary = () => {
         const newOrderInfo = {
             ...orderInfo,
             shipping: shipfee,
-            discount:discount,
+            discount: discount,
             customerInfo: {
                 fullName: orderInfo.customerInfo.fullName.trim(),
                 phoneNumber: orderInfo.customerInfo.phoneNumber.trim(),
                 address: orderInfo.customerInfo.address.trim(),
                 country: orderInfo.customerInfo.country,
-                postalCode: orderInfo.customerInfo.postal.trim()
+                postalCode: orderInfo.customerInfo.postal.trim(),
+                userEmail: orderInfo.customerInfo.userEmail.trim()
             }
         }
+
         AddNewData(newOrderInfo, 'orders', 'Order placed').then((orderID: any) => {
 
             if (Object.keys(currentUser).length > 0) {
@@ -74,6 +77,15 @@ const PriceSummary = () => {
                 UpdateData(currentUser.id, 'users', newUserData, () => { })
                 localStorage.setItem('currentUser', JSON.stringify(newUserData))
             }
+            newOrderInfo.products.map((item: any) => {
+                GetSingleData('products', item.id).then((result: any) => {
+                    UpdateData(item.id, 'products', {
+                        ...result,
+                        inventory: result.inventory - item.quantity,
+                        sold: result.sold + item.quantity
+                    }, () => { })
+                })
+            })
             setCartInfo({
                 selectedItem: [],
                 totalValue: 0

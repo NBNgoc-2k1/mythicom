@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CustomCheckbox from '../../../global_components/CustomCheckbox'
 import IconButton from '../../../global_components/IconButton'
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
@@ -9,6 +9,13 @@ import { UpdateData } from '../../../api/CRUD_API'
 
 const CartInfo = (props: any) => {
     const { cartInfo, setCartInfo } = useCart()
+
+    useEffect(() => {
+        setCartInfo({
+            selectedItem: [],
+            totalValue: 0
+        })
+    },[window.location])
 
     const SelectAllItem = () => {
         const tempSelect = props.cartInfo.map((item: any) => item.id)

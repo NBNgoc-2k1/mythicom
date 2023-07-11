@@ -27,7 +27,7 @@ const OrderSummary = (props: any) => {
             </div>
             <hr className='border-2 border-dark-silver my-4' />
             <div className='flex items-center justify-end text-xl text-dark-silver font-bold capitalize'>
-                <AppButton content='Buy again' className='!text-base mx-1 sm:mx-6' onClick={BuyAgain} />
+                <AppButton content='Buy Again' className='!text-base mx-1 sm:mx-6' onClick={BuyAgain} />
                 subtotal:
                 <p className='text-xl sm:text-2xl text-gold mx-4'>{currencyFormatter.format(props.data.total)}</p>
             </div>

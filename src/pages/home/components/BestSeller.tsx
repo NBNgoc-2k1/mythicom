@@ -19,7 +19,7 @@ const BestSeller = () => {
 
     useEffect(() => {
         FetchData()
-    }, [])
+    }, [window.location])
 
     return (
         <div className='my-8'>

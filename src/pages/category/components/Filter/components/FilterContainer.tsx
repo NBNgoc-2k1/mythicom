@@ -1,6 +1,6 @@
 import React from 'react'
 import Label from './Label'
-import CustomCheckbox from '../../../global_components/CustomCheckbox'
+import FilterCheckbox from './FilterCheckbox'
 
 const FilterContainer = (props: any) => {
     return (
@@ -10,16 +10,18 @@ const FilterContainer = (props: any) => {
                 {
                     props.valueSet.length > 0 ?
                         props.valueSet.map((value: any) => {
+                            
                             return (
-                                <CustomCheckbox unCheckedAll={props.unCheckedAll} nameGroup={props.label}
+                                <FilterCheckbox unCheckedAll={props.unCheckedAll} nameGroup={props.label}
                                     value={value}
                                     resetUnCheckAll={() => props.resetUnCheckAll()}
                                 />
                             )
                         })
-                        : <CustomCheckbox unCheckedAll={props.unCheckedAll} nameGroup={props.label}
+                        : <FilterCheckbox unCheckedAll={props.unCheckedAll} nameGroup={props.label}
                             value={''}
-                            resetUnCheckAll={() => props.resetUnCheckAll()} />
+                            resetUnCheckAll={() => props.resetUnCheckAll()}
+                        />
                 }
             </div>
         </div>

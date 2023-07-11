@@ -14,6 +14,7 @@ export const OrderContext = createContext<OrderContextType>({
             address: '',
             country: 'Vietnam',
             postal: '',
+            userEmail: ''
         },
         deliverMethod: 'Standard international',
         paymentMethod: 'Pay with Paypal',

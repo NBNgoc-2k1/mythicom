@@ -16,6 +16,7 @@ export const AddToCart = (newItem: any) => {
             const newUserData = {
                 ...currentUser, "cart": newCart,
             }
+            
             UpdateData(currentUser.id, 'users', newUserData, () => { })
             localStorage.setItem('currentUser', JSON.stringify(newUserData))
             successSnackbar('Add to cart')

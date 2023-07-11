@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ProductCard from '../../../global_components/ProductCard'
 import TitlePage from '../../../global_components/TitlePage'
-import Filter from '../components/FilterSidebar'
+import Filter from '../components/Filter/FilterSidebar'
 import SortDropdown from '../components/SortDropdown'
 import { useLocation, useParams } from 'react-router-dom'
 import Loading from '../../../global_components/Loading'
@@ -79,7 +79,7 @@ const CategoryPage = () => {
   }
 
   async function FetchData() {
-    await GetAllOrderedData('createdAt', 'products').then((products) => {
+    await GetAllOrderedData('sold', 'products').then((products) => {
       setAllProducts(products)
       const valueSet: any = {
         category: [],
@@ -91,7 +91,7 @@ const CategoryPage = () => {
 
       if (param1 === 'result') {
         setResultProducts(products)
-        const result = products.filter(((data: any) => data.name.includes(param2)))
+        const result = products.filter(((data: any) => data.name.toLowerCase().includes(param2?.toLowerCase())))
         setFilteredProducts(result)
         result.map((item: any) => {
           !valueSet.author.includes(item.author) && valueSet.author.push(item.author)

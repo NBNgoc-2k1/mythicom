@@ -30,6 +30,7 @@ const index = (props: any) => {
             address: '',
             country: 'Vietnam',
             postal: '',
+            userEmail: ''
         },
         deliverMethod: 'Standard international',
         paymentMethod: 'Pay with Paypal',

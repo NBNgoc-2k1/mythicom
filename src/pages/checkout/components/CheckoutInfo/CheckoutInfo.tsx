@@ -27,9 +27,6 @@ const CheckoutInfo = () => {
         },
     ]
 
-    useEffect(() => {
-    }, [paymentMethod])
-
     return (
         <div className='lg:w-3/5 2xl:pr-[10%]'>
             <DeliveryInfo />

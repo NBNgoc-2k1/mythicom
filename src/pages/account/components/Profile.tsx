@@ -15,6 +15,8 @@ const Profile = (props: any) => {
     const [fullName, setFullName] = useState(props.user.fullName);
     const [address, setAddress] = useState(props.user.address);
     const [phoneNumber, setPhoneNumber] = useState(props.user.phoneNumber);
+    const orderInfo = JSON.parse(sessionStorage.getItem('orderInfo') || '{}')
+
     const UpdateUserInfo = (currentUser: any, email: any, fullName: any, address: any, phoneNumber: any) => {
         if (!isEmail(email) || fullName.match(/^\s*$/) || address.match(/^\s*$/) || phoneNumber.match(/^\s*$/)) {
             errorSnackbar('Please do not empty any information field')
@@ -35,6 +37,17 @@ const Profile = (props: any) => {
                         displayName: `${updateUser.fullName}`,
                     }).then(() => {
                         localStorage.setItem('currentUser', JSON.stringify(updateUser))
+                        sessionStorage.setItem('orderInfo', JSON.stringify({
+                            ...orderInfo,
+                            customerInfo: {
+                                ...orderInfo.customerInfo,
+                                fullName: fullName,
+                                phoneNumber: phoneNumber,
+                                address: address,
+                                userEmail: email
+                            }
+                        }))
+
                         successSnackbar('Change information')
                     })
                 })

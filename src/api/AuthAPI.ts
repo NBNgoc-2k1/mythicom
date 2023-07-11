@@ -21,6 +21,7 @@ export function LoginAPI(email: string, password: string, clearField?: any, clos
                         address: user.address,
                         country: 'Vietnam',
                         postal: '',
+                        userEmail: user.userEmail
                     },
                     deliverMethod: 'Standard international',
                     paymentMethod: 'Pay with Paypal',

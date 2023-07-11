@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import Label from './Label'
-import FilterWrapper from './FilterContainer'
-import AppButton from '../../../global_components/AppButton'
+import Label from './components/Label'
+import FilterWrapper from './components/FilterContainer'
+import AppButton from '../../../../global_components/AppButton'
 import PropTypes from 'prop-types'
-import { useFilter } from '../../../contexts/FilterContext'
+import { useFilter } from '../../../../contexts/FilterContext'
 import { useParams } from 'react-router-dom'
 
 const Filter = (props: any) => {
@@ -75,7 +75,7 @@ const Filter = (props: any) => {
                 {
                     props.filterValue && Object.keys(props.filterValue).map((value) => {
                         if ((param1 !== 'books' && value !== 'author' && value !== 'language') ||
-                            (param1 === 'books' && (value === 'origin' || value === 'author' || value === 'language'))) { 
+                            (param1 === 'books' && (value === 'origin' || value === 'author' || value === 'language'))) {
                             return (
                                 <FilterWrapper label={value}
                                     valueSet={props.filterValue[value]}

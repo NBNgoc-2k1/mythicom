@@ -47,13 +47,14 @@ const ProductInfo = (props: any) => {
             const orderInfo = JSON.parse(sessionStorage.getItem('orderInfo') || '{}')
             const newData = {
                 ...orderInfo,
-                    products: [{
-                        img: props.data.thumbImg,
-                        name: props.data.name,
-                        price: props.data.price,
-                        quantity: quantity,
-                    }],
-                    total: props.data.price * quantity
+                products: [{
+                    id: props.data.id,
+                    img: props.data.thumbImg,
+                    name: props.data.name,
+                    price: props.data.price,
+                    quantity: quantity,
+                }],
+                total: props.data.price * quantity
             }
             sessionStorage.setItem('orderInfo', JSON.stringify(newData))
         }
@@ -65,6 +66,7 @@ const ProductInfo = (props: any) => {
                     address: '',
                     country: 'Vietnam',
                     postal: '',
+                    userEmail: ''
                 },
                 deliverMethod: 'Standard international',
                 paymentMethod: 'Pay with Paypal',
@@ -73,6 +75,7 @@ const ProductInfo = (props: any) => {
                     name: props.data.name,
                     price: props.data.price,
                     quantity: quantity,
+                    id: props.data.id
                 }],
                 total: props.data.price * quantity,
                 shipping: 0,

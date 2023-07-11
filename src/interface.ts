@@ -4,6 +4,7 @@ export interface userData {
     address: string,
     country: string,
     postal: string,
+    userEmail: string
 }
 
 export interface OrderInfo {

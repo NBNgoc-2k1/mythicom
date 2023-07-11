@@ -43,7 +43,6 @@ const CartPriceSummary = (props: any) => {
                 <AppButton content='check out' disabled={cartInfo.selectedItem.length <= 0}
                     title='Select product'
                     className='uppercase w-full' onClick={() => {
-                        navigation('/checkout')
                         const orderInfo = JSON.parse(sessionStorage.getItem('orderInfo') || '{}')
                         const selectedItems = currentUserInfo.cart.filter((item: any) => cartInfo.selectedItem.includes(item.id))
                         const newOrderInfo = {
@@ -52,6 +51,7 @@ const CartPriceSummary = (props: any) => {
                             total: cartInfo.totalValue
                         }
                         sessionStorage.setItem('orderInfo', JSON.stringify(newOrderInfo))
+                        navigation('/checkout')
                     }} />
                 <p className={` ${cartInfo.selectedItem.length > 0 && 'hidden'} 
             lg:hidden text-sm text-green text-center`}>

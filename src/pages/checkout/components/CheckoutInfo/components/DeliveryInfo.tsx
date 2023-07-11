@@ -13,7 +13,7 @@ const DeliveryInfo = () => {
     const [country, setCountry] = useState('Vietnam')
     const [postalCode, setPostalCode] = useState(orderInfo.customerInfo.postal || '');
     const [countryList, setCountryList] = useState([])
-    const {setOrderInfo} = userOrder()
+    const { setOrderInfo } = userOrder()
     const getCountry = async () => {
         try {
             const respond = await axios.get('https://restcountries.com/v3.1/all')
@@ -49,12 +49,14 @@ const DeliveryInfo = () => {
             <TextField label='Fullname' value={fullname}
                 required={true}
                 onChange={(e: any) => {
-                setFullname(e.target.value)
-                ChangeUserInfoState('fullName', e.target.value)
-            }} />
+                    setFullname(e.target.value)
+                    ChangeUserInfoState('fullName', e.target.value)
+                }} />
             <div className='sm:flex justify-between '>
                 <TextField value={email} onChange={(e: any) => {
                     setEmail(e.target.value)
+                    ChangeUserInfoState('userEmail', e.target.value)
+
                 }} label='Email' className='sm:w-[65%]'
 
                 />

@@ -8,17 +8,15 @@ const SortDropdown = (props: any) => {
     const [isDropdownOpen, setDropdownOpen] = useState(false)
 
     function Compare(a: any, b: any, field: string) {
-        const firstTime = new Date(b.createAt).getTime()
-        const secondTime = new Date(a.createAt).getTime()
         switch (field) {
             case 'Highest Price':
                 return b.price - a.price
             case 'Lowest Price':
                 return a.price - b.price
             case 'Featured':
-                return b.quantitySold - a.quantitySold
+                return b.sold - a.sold
             case 'Newest':                
-                return firstTime - secondTime
+                return a.createdAt.seconds - b.createdAt.seconds
             default:
                 break;
         }
