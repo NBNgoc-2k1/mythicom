@@ -49,7 +49,7 @@ const Navigation = (props: any) => {
                         onClick={() => setOpenFigureDropdown(!openFigureDropdown)}
                     />
                 </div>
-                <div className={`${!openFigureDropdown && 'hidden'} group-hover:block hover:block`}>
+                <div className={`${!openFigureDropdown && 'hidden'} lg:group-hover:block lg:hover:block`}>
                     <HoverDropdown data={categoryData.figurines}
                         className='bg-white text-dark-grey'
                         closeDrawer={props.closeDrawer}
@@ -85,7 +85,7 @@ const Navigation = (props: any) => {
                         onClick={() => setOpenAccessoryDropdown(!openAccessoryDropdown)}
                     />
                 </div>
-                <div className={`${!openAccessoryDropdown && 'hidden'} group-hover:block hover:block`}>
+                <div className={`${!openAccessoryDropdown && 'hidden'} lg:group-hover:block lg:hover:block`}>
                     <HoverDropdown data={categoryData.accessories}
                         className='bg-white text-dark-grey'
                         closeDrawer={props.closeDrawer}

@@ -6,7 +6,7 @@ const IconButton = (props:any) => {
     return (
         <div className={`cursor-pointer ${props.className} 
             ${props.disabled ? '!bg-dark-silver !cursor-not-allowed pointer-events-none' : 'hover:brightness-75'}
-        `} onClick={props.onClick} >
+        `} onMouseDown={props.onClick} >
             <FontAwesomeIcon icon={props.icon} className={`${props.iconClass}  ${props.disabled && '!text-dark-grey'}`}/>
         </div>
     )

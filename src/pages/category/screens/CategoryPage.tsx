@@ -106,17 +106,20 @@ const CategoryPage = () => {
         setResultProducts(productsByCategory)
         setFilteredProducts(productsByCategory)
 
-        const productsBySubCategory = products.filter((data: any) => data.subCategory === param2)
-        if (productsBySubCategory.length > 0) {
-          setResultProducts(productsBySubCategory)
-          setFilteredProducts(productsBySubCategory)
-          productsBySubCategory.map((item: any) => {
-            !valueSet.author.includes(item.author) && valueSet.author.push(item.author)
-            !valueSet.category.includes(item.subCategory) && valueSet.category.push(item.subCategory)
-            !valueSet.language.includes(item.language) && valueSet.language.push(item.language)
-            !valueSet.material.includes(item.material) && valueSet.material.push(item.material)
-            !valueSet.origin.includes(item.origin) && valueSet.origin.push(item.origin)
-          })
+        if (param2 !== '1') {
+          const productsBySubCategory = products.filter((data: any) => data.subCategory.replaceAll(/\s/g,'').toLowerCase() === param2?.toLowerCase())
+          if (productsBySubCategory.length > 0) {
+            setResultProducts(productsBySubCategory)
+            setFilteredProducts(productsBySubCategory)
+            productsBySubCategory.map((item: any) => {
+              !valueSet.author.includes(item.author) && valueSet.author.push(item.author)
+              !valueSet.category.includes(item.subCategory) && valueSet.category.push(item.subCategory)
+              !valueSet.language.includes(item.language) && valueSet.language.push(item.language)
+              !valueSet.material.includes(item.material) && valueSet.material.push(item.material)
+              !valueSet.origin.includes(item.origin) && valueSet.origin.push(item.origin)
+            })
+          }
+          else setFilteredProducts([])
         }
         else {
           productsByCategory.map((item: any) => {
