@@ -107,7 +107,7 @@ const CategoryPage = () => {
         setFilteredProducts(productsByCategory)
 
         if (param2 !== '1') {
-          const productsBySubCategory = products.filter((data: any) => data.subCategory.replaceAll(/\s/g,'').toLowerCase() === param2?.toLowerCase())
+          const productsBySubCategory = products.filter((data: any) => data.subCategory.replaceAll(/\s/g, '').toLowerCase() === param2?.toLowerCase())
           if (productsBySubCategory.length > 0) {
             setResultProducts(productsBySubCategory)
             setFilteredProducts(productsBySubCategory)
@@ -202,17 +202,23 @@ const CategoryPage = () => {
         </div>
         <div className='absolute'>
           <Drawer open={openFilterDrawer} direction='right' onClose={ToggleFilterDrawer}
-            className='overflow-y-scroll overflow-x-hidden !w-4/5 sm:!w-1/2'
+            className='overflow-y-auto overflow-x-hidden !w-4/5 sm:!w-1/2'
           >
             <IconButton icon={faClose} className='relative left-[85%] my-2' iconClass='text-dark-grey text-3xl'
               onClick={ToggleFilterDrawer}
             />
             <Filter filterValue={filterValueSet}
-              onFilterByCategory={() => FilterByCategory(resultProducts)}
-              onFilterByPrice={() => FilterByPrice(filteredProducts,
-                filterValue.rangePrice.maxPrice.toString(),
-                filterValue.rangePrice.minPrice.toString()
-              )}
+              onFilterByCategory={() => {
+                FilterByCategory(resultProducts)
+                ToggleFilterDrawer()
+              }}
+              onFilterByPrice={() => {
+                FilterByPrice(filteredProducts,
+                  filterValue.rangePrice.maxPrice.toString(),
+                  filterValue.rangePrice.minPrice.toString()
+                )
+                ToggleFilterDrawer()
+              }}
               onReset={ResetFilter} />
           </Drawer>
         </div>
